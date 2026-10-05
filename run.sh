@@ -6,7 +6,7 @@ cd "$SCRIPT_DIR"
 export PYTHONPATH="$PWD:$PYTHONPATH"
 
 echo "[INFO] Launching AODLF Backend from: $PWD"
-python app/main.py
+python main.py
 EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then

@@ -4,7 +4,7 @@ cd /d "%~dp0"
 set PYTHONPATH=%CD%;%PYTHONPATH%
 
 echo [INFO] Launching AODLF Backend from: %CD%
-python app/main.py
+python main.py
 
 if %ERRORLEVEL% NEQ 0 (
     echo.

@@ -20,4 +20,4 @@ The system is functional at an integrated level, but ongoing work focuses on ref
 *   **Model Fallback Hardening:** Ensuring the system gracefully degrades if the Semantic Classification LLM fails or times out.
 ## Usage
 
-`run.bat` has been included for windows users, but you can also use `python app/main.py` directly.
+Simply launch using `run.bat` for windows, and `run.sh` for MacOS/Linux.

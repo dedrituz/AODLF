@@ -31,6 +31,7 @@ from app.providers.base import ModelInfo
 from app.providers.manager import ProviderConnectionReport, ProviderManager
 from app.routing.smart_assignment import SmartModelAssigner, TierAssignment
 from app.routing.system_scanner import SystemScanner
+from app import __version__
 
 console = Console()
 
@@ -52,7 +53,7 @@ class CLIApp:
     def print_banner(self):
         banner_text = Text()
         banner_text.append("====================================================================\n", style="bold cyan")
-        banner_text.append("   AUTOMATED OPEN-DOMAIN LEARNING FRAMEWORK (AODLF) - PROTOTYPE\n", style="bold yellow")
+        banner_text.append(f"   AUTOMATED OPEN-DOMAIN LEARNING FRAMEWORK (AODLF) - PROTOTYPE v{__version__}\n", style="bold yellow")
         banner_text.append("   Intelligent Tiered Routing | Multimodal Media Engine | Local & Cloud\n", style="dim")
         banner_text.append("====================================================================", style="bold cyan")
         console.print(Panel(banner_text, border_style="cyan"))

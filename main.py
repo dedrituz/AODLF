@@ -14,6 +14,7 @@ if str(gen_root) not in sys.path:
     sys.path.insert(0, str(gen_root))
 
 from app.cli.interface import start_cli
+from app import __version__
 
 
 def main():
@@ -41,7 +42,7 @@ def main():
     if args.server:
         import uvicorn
         from app.api.routes import app
-        print(f"Starting AODLF FastAPI Backend Server on http://{args.host}:{args.port}...")
+        print(f"Starting AODLF FastAPI Backend Server v{__version__} on http://{args.host}:{args.port}...")
         uvicorn.run(app, host=args.host, port=args.port)
     else:
         # Launch Interactive CLI App

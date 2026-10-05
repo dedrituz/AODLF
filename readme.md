@@ -18,3 +18,6 @@ The system is functional at an integrated level, but ongoing work focuses on ref
 *   **End-to-End Verification:** Rigorously testing the entire chain (Orchestrator $\rightarrow$ Router $\rightarrow$ Provider).
 *   **Latency Optimization:** Fine-tuning the "Grey Area" logic in the router to ensure fast heuristics are prioritized over expensive semantic calls when possible, keeping latency low.
 *   **Model Fallback Hardening:** Ensuring the system gracefully degrades if the Semantic Classification LLM fails or times out.
+## Usage
+
+`run.bat` has been included for windows users, but you can also use `python app/main.py` directly.

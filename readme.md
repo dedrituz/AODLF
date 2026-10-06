@@ -1,10 +1,10 @@
-# AODLF Project (v0.3.2)
+# AODLF Project (v0.3.3)
 
 *Adaptive Open-Domain Learning Framework*
 
 An adaptive, modular AI orchestration framework designed to bridge structured academic instruction with open-ended personal exploration through intelligent architecture. It transitions from simple keyword matching to **Semantic Orchestration**—using LLMs for deep classification and context summarization.
 
-## Core Capabilities & Intelligence
+## Core Capabilities & Intelligence - Current Features and Recent Fixes
 
 AODLF goes beyond standard chat wrappers by providing:
 *   **Intelligent Tiered Routing:** Combines fast heuristics with asynchronous LLM-based semantic classification (`_semantic_classify`) to route queries to the most efficient model for your specific task, balancing speed and intelligence.

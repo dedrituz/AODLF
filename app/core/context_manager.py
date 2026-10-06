@@ -52,6 +52,18 @@ class ContextManager:
         self.compacted_summary = None
         self.compaction_history.clear()
 
+    def context_has_images(self) -> bool:
+        """Returns True only if a raw image binary (base64) exists in the active context window.
+
+        This is an exact structural check, not a heuristic:
+        - Vision path: stores the encoded image in Message.images → returns True.
+        - OCR path: stores only extracted text in Message.content, images=None → returns False.
+
+        Used by the router to block text-only model selection when an image payload
+        is present in context, while fully preserving OCR-based routing to lightweight models.
+        """
+        return any(bool(m.images) for m in self.messages)
+
     def estimate_tokens(self, text: str) -> int:
         """Heuristic token estimation: ~4 chars per token for English text and code."""
         if not text:

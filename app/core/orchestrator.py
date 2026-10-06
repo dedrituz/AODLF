@@ -180,11 +180,18 @@ class BackendOrchestrator:
                 annotated_contexts.append(doc_ctx)
 
         # 3. Intelligent Tiered Routing
+        # has_image must reflect the full context window, not just the current turn.
+        # A raw image binary from an earlier vision-path turn still lives in context and
+        # will be forwarded to the model — text-only models must remain excluded until
+        # the context is cleared. context_has_images() is False for OCR sessions because
+        # OCR stores extracted text only, preserving lightweight model routing for those.
+        current_turn_has_image = bool(resolved_file and DocumentLoader.is_image(resolved_file))
+        image_in_context = self.context_manager.context_has_images()
         yield StreamChunk(event_type="status", content="Evaluating query complexity & routing...")
         routing_decision: RoutingDecision = await self.router.route_prompt(
             prompt=user_input,
             provider=provider,
-            has_image=bool(resolved_file and DocumentLoader.is_image(resolved_file)),
+            has_image=current_turn_has_image or image_in_context,
             requires_vision_model=requires_vision_model
         )
 

@@ -79,13 +79,25 @@ class IntelligentRouter:
             )
 
         # 2. Multimodal Path
-        if has_image and requires_vision_model:
+        # Gate on has_image alone — this flag is True for both:
+        #   a) Current-turn: a new image file is attached (requires_vision_model may be True or False).
+        #   b) Context-carry: a raw image binary from an earlier vision-path turn is still in the
+        #      context window and will be forwarded to the model regardless of the current prompt.
+        # In either case the receiving model must support vision; text-only models are excluded.
+        # requires_vision_model only governs the reason string for observability — it does not
+        # change which model is selected.
+        if has_image:
             target = self.tier_assignment.vision_model or self.tier_assignment.default_model
+            reason = (
+                "Multimodal vision requirement detected."
+                if requires_vision_model
+                else "Image present in active context; vision-capable model required."
+            )
             return RoutingDecision(
                 tier="vision",
                 selected_model=target,
                 confidence=0.95,
-                reason="Multimodal vision requirement detected.",
+                reason=reason,
                 is_multimodal=True
             )
 

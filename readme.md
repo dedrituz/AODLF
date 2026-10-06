@@ -9,7 +9,7 @@ An adaptive, modular AI orchestration framework designed to bridge structured ac
 AODLF goes beyond standard chat wrappers by providing:
 *   **Intelligent Tiered Routing:** Combines fast heuristics with asynchronous LLM-based semantic classification (`_semantic_classify`) to route queries to the most efficient model for your specific task, balancing speed and intelligence.
 *   **Semantic Context Management:** Unlike simple truncation, AODLF uses **Semantic Summarization**. It leverages the active provider's LLM to summarize older conversation history, preserving long-term intent while managing token budgets effectively.
-*   **Multimodal Intelligence:** Automatically detects input types. For images, it evaluates text density to decide whether to perform OCR or route to a dedicated Vision model. OCR is now functional with accurate score calculation, allowing the use of text models even when the context contains images.
+*   **Multimodal Intelligence:** Automatically detects input types. For images, it evaluates text density to decide whether to perform OCR or route to a dedicated Vision model. OCR is now functional with accurate score calculation, allowing the use of text models with images that don't require complex processing using vision models.
 *   **Hardware-Awareness:** The system scans your local hardware (CPU/GPU/VRAM) and uses that data to intelligently assign model tiers for optimal performance on your specific machine.
 *   **Quiet Operation:** Logging and warnings from dependencies like PaddleOCR, PaddlePaddle, Padlex, and Torch are suppressed for a cleaner experience.
 
